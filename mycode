@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+
+// Defining the Car structure
+struct Car {
+    char make[50];
+    char model[50];
+    int year;
+    double price;
+};
+
+// Function for inputing the  car details
+void inputCarDetails(struct Car *car) {
+    printf("Enter make: ");
+    scanf("%s", car->make);
+    printf("Enter model: ");
+    scanf("%s", car->model);
+    printf("Enter year: ");
+    scanf("%d", &car->year);
+    printf("Enter price: ");
+    scanf("%lf", &car->price);
+}
+
+
+
+// Function for printing out the car details
+void printCarDetails(const struct Car *car) {
+    printf("Make: %s\n", car->make);
+    printf("Model: %s\n", car->model);
+    printf("Year: %d\n", car->year);
+    printf("Price: %.2lf\n", car->price); // Display price with two decimal places
+}
+
+int main() {
+    const int numCars = 10;
+    struct Car cars[numCars];
+
+    //Populating  the input car details
+    for (int i = 0; i < numCars; ++i) {
+        printf("Enter details for Car %d:\n", i + 1);
+        inputCarDetails(&cars[i]);
+    }
+
+    //  Printing out the car details
+    printf("\nCar Details:\n");
+    for (int i = 0; i < numCars; ++i) {
+        printf("Car %d:\n", i + 1);
+        printCarDetails(&cars[i]);
+    }
+
+    return 0;
+}
+
